@@ -1,0 +1,64 @@
+package com.example.ayuda_municipios.municipios;
+
+import java.util.List;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
+
+import com.example.ayuda_municipios.municipios.dto.MunicipioDTO;
+
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+
+
+@CrossOrigin("*")
+@RestController
+@RequestMapping("/municipios")
+@RequiredArgsConstructor
+public class MunicipiosController {
+    private final MunicipiosService municipiosService;
+
+    @GetMapping()
+    public List<Municipio> getAll() {
+        return municipiosService.getAll();
+    }
+
+    @GetMapping("/{id}")
+    public Municipio getMethodName(@PathVariable int id) {
+        Municipio municipio = municipiosService.getById(id);
+        if(municipio != null) {
+            return municipio;
+        } else {
+            throw new ResponseStatusException(
+            HttpStatus.NOT_FOUND, "Municipio no encontrado", null);
+        }
+
+    }
+    
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Municipio postMethodName(@RequestBody @Valid MunicipioDTO m) {        
+        return municipiosService.insert(m);
+    }
+
+    @PutMapping("/{id}")
+    public Municipio putMethodName(@PathVariable int id, @RequestBody @Valid MunicipioDTO m) {
+        return municipiosService.update(id, m);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable int id) {
+        municipiosService.delete(id);
+    }
+}
