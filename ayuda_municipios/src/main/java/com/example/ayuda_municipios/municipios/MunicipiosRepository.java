@@ -9,9 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 @Repository
 public interface MunicipiosRepository extends JpaRepository<Municipio, Integer> {
     List<Municipio> findBy();
-
     Municipio findMunicipioById(int id);
-
     Municipio findMunicipioByNombre(String nombre);
 
 }

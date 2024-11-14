@@ -1,9 +1,8 @@
-package com.example.ayuda_municipios.municipios;
+package com.example.ayuda_municipios.provincias;
 
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,50 +14,48 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.example.ayuda_municipios.municipios.dto.MunicipioDTO;
+import com.example.ayuda_municipios.provincias.dto.ProvinciaDTO;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
-
-@CrossOrigin("*")
 @RestController
-@RequestMapping("/municipios")
+@RequestMapping("/provincias")
 @RequiredArgsConstructor
-public class MunicipiosController {
-    private final MunicipiosService municipiosService;
+public class ProvinciasController {
+    private final ProvinciasService provinciasService;
 
     @GetMapping()
-    public List<Municipio> getAll() {
-        return municipiosService.getAll();
+    public List<Provincia> obtenerProvincias() {
+        return provinciasService.getAll();
     }
 
     @GetMapping("/{id}")
-    public Municipio buscarPorId(@PathVariable int id) {
-        Municipio municipio = municipiosService.getById(id);
-        if(municipio != null) {
-            return municipio;
+    public Provincia buscarPorId(@PathVariable int id) {
+        Provincia provincia = provinciasService.getById(id);
+        if(provincia != null) {
+            return provincia;
         } else {
             throw new ResponseStatusException(
-            HttpStatus.NOT_FOUND, "Municipio no encontrado", null);
+            HttpStatus.NOT_FOUND, "Provincia no encontrado", null);
         }
-
     }
+
     
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Municipio nuevoMunicipio(@RequestBody @Valid MunicipioDTO m) {        
-        return municipiosService.insert(m);
+    public Provincia nuevoProvincia(@RequestBody @Valid ProvinciaDTO p) {        
+        return provinciasService.insert(p);
     }
 
     @PutMapping("/{id}")
-    public Municipio updateMunicipio(@PathVariable int id, @RequestBody @Valid MunicipioDTO m) {
-        return municipiosService.update(id, m);
+    public Provincia updateProvincia(@PathVariable int id, @RequestBody @Valid ProvinciaDTO m) {
+        return provinciasService.update(id, m);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void borrarMunicipio(@PathVariable int id) {
-        municipiosService.delete(id);
+    public void borrarProvincia(@PathVariable int id) {
+        provinciasService.delete(id);
     }
 }
