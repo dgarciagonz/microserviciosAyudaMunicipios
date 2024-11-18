@@ -36,13 +36,13 @@ public class Solicitud {
     private String prioridad;
 
     static Solicitud fromDTO(SolicitudDTO solicitudDTO, Municipio municipio, Usuario usuario) {
-        return new Solicitud(0, 
-        solicitudDTO.getFecha_publicacion(), 
-        solicitudDTO.getAyuda(), 
-        municipio, 
-        usuario,
-        solicitudDTO.getCalle(), 
-        solicitudDTO.isCompletado(), 
-        solicitudDTO.getPrioridad());
+        return new Solicitud(0,
+                solicitudDTO.getFecha_publicacion(),
+                solicitudDTO.getAyuda(),
+                municipio,
+                usuario,
+                solicitudDTO.getCalle(),
+                solicitudDTO.isCompletado(),
+                solicitudDTO.getPrioridad());
     }
 }

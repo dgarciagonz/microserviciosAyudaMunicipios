@@ -20,7 +20,6 @@ import com.example.ayuda_municipios.municipios.dto.MunicipioDTO;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
-
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/municipios")
@@ -30,24 +29,24 @@ public class MunicipiosController {
 
     @GetMapping()
     public List<Municipio> getAll() {
-        return municipiosService.getAll();
+        return municipiosService.findMunicipiosOrdenado();
     }
 
     @GetMapping("/{id}")
     public Municipio buscarPorId(@PathVariable int id) {
         Municipio municipio = municipiosService.getById(id);
-        if(municipio != null) {
+        if (municipio != null) {
             return municipio;
         } else {
             throw new ResponseStatusException(
-            HttpStatus.NOT_FOUND, "Municipio no encontrado", null);
+                    HttpStatus.NOT_FOUND, "Municipio no encontrado", null);
         }
 
     }
-    
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Municipio nuevoMunicipio(@RequestBody @Valid MunicipioDTO m) {        
+    public Municipio nuevoMunicipio(@RequestBody @Valid MunicipioDTO m) {
         return municipiosService.insert(m);
     }
 

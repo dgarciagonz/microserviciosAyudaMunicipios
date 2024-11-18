@@ -35,11 +35,11 @@ public class Municipio {
     private Provincia provincia;
 
     @OneToMany(mappedBy = "municipio", cascade = CascadeType.ALL)
-    @JsonIgnore 
+    @JsonIgnore
     private List<Solicitud> solicitudes;
 
     static Municipio fromDTO(MunicipioDTO municipioDTO, Provincia provincia) {
-        return new Municipio(0, municipioDTO.getNombre(),municipioDTO.getCp(),provincia,null);
+        return new Municipio(0, municipioDTO.getNombre(), municipioDTO.getCp(), provincia, null);
     }
 
 }

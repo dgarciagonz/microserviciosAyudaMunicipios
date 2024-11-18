@@ -27,7 +27,7 @@ public class ProvinciasController {
 
     @GetMapping()
     public List<Provincia> obtenerProvincias() {
-        return provinciasService.getAll();
+        return provinciasService.findAllOrdenado();
     }
 
     @GetMapping("/{id}")

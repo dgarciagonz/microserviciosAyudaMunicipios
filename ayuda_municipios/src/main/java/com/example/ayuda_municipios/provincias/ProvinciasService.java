@@ -2,6 +2,7 @@ package com.example.ayuda_municipios.provincias;
 
 import java.util.List;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -15,8 +16,8 @@ import lombok.RequiredArgsConstructor;
 public class ProvinciasService {
     private final ProvinciasRepository provinciasRepository;
 
-    public List<Provincia> getAll(){
-        return provinciasRepository.findBy();
+    public List<Provincia> findAllOrdenado(){
+        return provinciasRepository.findAll(Sort.by(Sort.Order.asc("nombre")));
     }
 
     public Provincia getById(int id) {

@@ -2,6 +2,7 @@ package com.example.ayuda_municipios.municipios;
 
 import java.util.List;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -18,9 +19,8 @@ public class MunicipiosService {
     private final MunicipiosRepository municipiosRespository;
     private final ProvinciasRepository provinciasRespository;
 
-
-    public List<Municipio> getAll() {
-        return municipiosRespository.findBy();
+    public List<Municipio> findMunicipiosOrdenado() {
+        return municipiosRespository.findAllOrdenado(Sort.by(Sort.Order.asc("nombre")));
     }
 
     public Municipio getById(int id) {
@@ -30,7 +30,7 @@ public class MunicipiosService {
 
     public Municipio insert(MunicipioDTO municipioDTO) {
         Provincia provincia = provinciasRespository.findById(municipioDTO.getProvincia())
-        .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Provincia no encontrada"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Provincia no encontrada"));
 
         Municipio municipio = municipiosRespository.save(Municipio.fromDTO(municipioDTO, provincia));
         return municipiosRespository.findMunicipioById(municipio.getId());
@@ -42,7 +42,7 @@ public class MunicipiosService {
         }
 
         Provincia provincia = provinciasRespository.findById(municipioDTO.getProvincia())
-            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Provincia no encontrada"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Provincia no encontrada"));
 
         Municipio municipio = Municipio.fromDTO(municipioDTO, provincia);
         municipio.setId(id);

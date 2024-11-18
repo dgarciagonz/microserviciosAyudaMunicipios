@@ -7,16 +7,15 @@ import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data 
+@Data
 @NoArgsConstructor
 public class MunicipioDTO {
     @NotBlank(message = "El municipio no puede estar vacío")
     @Size(min = 2, message = "El municipio debe tener al menos 2 caracteres")
     private String nombre;
-    @Positive (message = "El código postal debe ser válido")
+    @Positive(message = "El código postal debe ser válido")
     private int cp;
     @Min(1)
-    @Positive (message = "La provincia debe ser válida")
+    @Positive(message = "La provincia debe ser válida")
     private int provincia;
 }
-
