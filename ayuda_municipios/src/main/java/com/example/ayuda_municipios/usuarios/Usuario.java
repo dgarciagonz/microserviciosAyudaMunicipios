@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.example.ayuda_municipios.solicitudes.Solicitud;
 import com.example.ayuda_municipios.usuarios.dto.UsuarioDTO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -28,7 +29,8 @@ public class Usuario {
     private String password;
     private String rol;
 
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "creador", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Solicitud> solicitudes;
 
     static Usuario fromDTO(UsuarioDTO usuarioDTO) {

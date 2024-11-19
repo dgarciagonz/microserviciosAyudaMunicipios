@@ -1,6 +1,7 @@
 package com.example.ayuda_municipios.seguridad;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -53,11 +54,12 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
 	 * @param claims
 	 */
 	private void setUpSpringAuthentication(DecodedJWT jwt) {
-		Authentication auth = new UsernamePasswordAuthenticationToken(jwt.getSubject(), jwt.getClaim("id"), null);
+		Authentication auth = new UsernamePasswordAuthenticationToken(jwt.getSubject(), jwt.getClaim("id"), new ArrayList<>());
 		SecurityContextHolder.getContext().setAuthentication(auth);
 	}
 
 	private String getJWTToken(HttpServletRequest request) {
+		
 		String authenticationHeader = request.getHeader(HEADER);
 		if (authenticationHeader == null || !authenticationHeader.startsWith(PREFIX))
 			return null;

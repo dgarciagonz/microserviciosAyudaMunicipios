@@ -1,3 +1,6 @@
+C:\Users\User\Documents\AAA programacion\curso_java\proyecto\ayuda_municipios\src\main\java\com\example\ayuda_municipios\auth\AuthController.java
+C:\Users\User\Documents\AAA programacion\curso_java\proyecto\ayuda_municipios\src\main\java\com\example\ayuda_municipios\auth\dto\LoginDTO.java
+C:\Users\User\Documents\AAA programacion\curso_java\proyecto\ayuda_municipios\src\main\java\com\example\ayuda_municipios\auth\dto\TokenResponseDTO.java
 C:\Users\User\Documents\AAA programacion\curso_java\proyecto\ayuda_municipios\src\main\java\com\example\ayuda_municipios\AyudaMunicipiosApplication.java
 C:\Users\User\Documents\AAA programacion\curso_java\proyecto\ayuda_municipios\src\main\java\com\example\ayuda_municipios\municipios\dto\MunicipioDTO.java
 C:\Users\User\Documents\AAA programacion\curso_java\proyecto\ayuda_municipios\src\main\java\com\example\ayuda_municipios\municipios\Municipio.java
@@ -9,6 +12,11 @@ C:\Users\User\Documents\AAA programacion\curso_java\proyecto\ayuda_municipios\sr
 C:\Users\User\Documents\AAA programacion\curso_java\proyecto\ayuda_municipios\src\main\java\com\example\ayuda_municipios\provincias\ProvinciasController.java
 C:\Users\User\Documents\AAA programacion\curso_java\proyecto\ayuda_municipios\src\main\java\com\example\ayuda_municipios\provincias\ProvinciasRepository.java
 C:\Users\User\Documents\AAA programacion\curso_java\proyecto\ayuda_municipios\src\main\java\com\example\ayuda_municipios\provincias\ProvinciasService.java
+C:\Users\User\Documents\AAA programacion\curso_java\proyecto\ayuda_municipios\src\main\java\com\example\ayuda_municipios\seguridad\DefaultExceptionHandler.java
+C:\Users\User\Documents\AAA programacion\curso_java\proyecto\ayuda_municipios\src\main\java\com\example\ayuda_municipios\seguridad\DelegatedAuthenticationEntryPoint.java
+C:\Users\User\Documents\AAA programacion\curso_java\proyecto\ayuda_municipios\src\main\java\com\example\ayuda_municipios\seguridad\JWTAuthorizationFilter.java
+C:\Users\User\Documents\AAA programacion\curso_java\proyecto\ayuda_municipios\src\main\java\com\example\ayuda_municipios\seguridad\RestError.java
+C:\Users\User\Documents\AAA programacion\curso_java\proyecto\ayuda_municipios\src\main\java\com\example\ayuda_municipios\seguridad\WebSecurityConfig.java
 C:\Users\User\Documents\AAA programacion\curso_java\proyecto\ayuda_municipios\src\main\java\com\example\ayuda_municipios\solicitudes\dto\SolicitudDTO.java
 C:\Users\User\Documents\AAA programacion\curso_java\proyecto\ayuda_municipios\src\main\java\com\example\ayuda_municipios\solicitudes\Solicitud.java
 C:\Users\User\Documents\AAA programacion\curso_java\proyecto\ayuda_municipios\src\main\java\com\example\ayuda_municipios\solicitudes\SolicitudesController.java
@@ -16,3 +24,6 @@ C:\Users\User\Documents\AAA programacion\curso_java\proyecto\ayuda_municipios\sr
 C:\Users\User\Documents\AAA programacion\curso_java\proyecto\ayuda_municipios\src\main\java\com\example\ayuda_municipios\solicitudes\SolicitudesService.java
 C:\Users\User\Documents\AAA programacion\curso_java\proyecto\ayuda_municipios\src\main\java\com\example\ayuda_municipios\usuarios\dto\UsuarioDTO.java
 C:\Users\User\Documents\AAA programacion\curso_java\proyecto\ayuda_municipios\src\main\java\com\example\ayuda_municipios\usuarios\Usuario.java
+C:\Users\User\Documents\AAA programacion\curso_java\proyecto\ayuda_municipios\src\main\java\com\example\ayuda_municipios\usuarios\UsuariosController.java
+C:\Users\User\Documents\AAA programacion\curso_java\proyecto\ayuda_municipios\src\main\java\com\example\ayuda_municipios\usuarios\UsuariosRepository.java
+C:\Users\User\Documents\AAA programacion\curso_java\proyecto\ayuda_municipios\src\main\java\com\example\ayuda_municipios\usuarios\UsuariosService.java

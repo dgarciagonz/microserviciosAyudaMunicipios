@@ -5,6 +5,7 @@ import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -25,7 +26,7 @@ import static org.springframework.security.config.Customizer.withDefaults;
 public class WebSecurityConfig {
     private final AuthenticationEntryPoint authEntryPoint;
 
-    @Value("${jwt.secret}") 
+    @Value("${jwt.secret}")
     private String secret;
 
     @Bean
@@ -34,8 +35,12 @@ public class WebSecurityConfig {
                 .addFilterAfter(new JWTAuthorizationFilter(secret), UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/auth/login", "/auth/registro").permitAll()
+                        .requestMatchers(HttpMethod.GET,
+                                "/solicitudes", "/solicitudes/{id}",
+                                "/provincias", "/provincias/{id}",
+                                "/municipios", "/municipios/{id}").permitAll()
                         .anyRequest().authenticated());
-                        
+
         http.exceptionHandling(handling -> handling.authenticationEntryPoint(authEntryPoint));
         http.sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
         return http.build();

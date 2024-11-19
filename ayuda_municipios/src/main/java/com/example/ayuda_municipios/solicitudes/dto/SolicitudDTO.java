@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class SolicitudDTO {
     @NotNull
-    @Pattern(regexp = "^\\d{4}-\\d{2}-\\d{2}", message = "La fecha no tiene un formato correcto")
+    @Pattern(regexp = "^\\d{2}-\\d{2}-\\d{4}", message = "La fecha no tiene un formato correcto")
     private String fecha_publicacion;
     @NotBlank(message = "el campo Ayuda no puede estar vacío")
     @Size(min = 3, message = "el campo Ayuda debe tener al menos 3 caracteres")
@@ -21,8 +21,8 @@ public class SolicitudDTO {
     @NotNull(message = "el municipio no puede estar en blanco")
     @Positive(message = "el municipio debe ser positivo")
     private int municipio;
-    @NotNull(message = "el autor no puede estar en blanco")
-    private int autor;
+    @NotNull(message = "el creador no puede estar en blanco")
+    private int creador;
     @Size(min = 3,max = 255, message = "el campo calle debe tener al menos 3 caracteres")
     private String calle;
     private boolean completado = false;

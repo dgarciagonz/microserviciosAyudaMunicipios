@@ -39,7 +39,7 @@ public class UsuariosService {
     }
 
     public Usuario login(LoginDTO loginDTO) throws NoSuchAlgorithmException {
-        return usuariosRepository.findByCorreoAndPassword(loginDTO.getCorreo(), encodePassword(loginDTO.getPassword()))
+        return usuariosRepository.findByEmailAndPassword(loginDTO.getEmail(), encodePassword(loginDTO.getPassword()))
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Usuario no encontrado"));
     }
 
@@ -47,7 +47,7 @@ public class UsuariosService {
         Usuario usuario = usuariosRepository.findById(idUsuario)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario no encontrado"));
 
-        return solicitudesRepository.findByAutor(usuario);
+        return solicitudesRepository.findByCreador(usuario);
     }
 
     public Usuario update(int id, UsuarioDTO usuarioDTO) {

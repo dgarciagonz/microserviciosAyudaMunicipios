@@ -27,7 +27,7 @@ public class ProvinciasController {
 
     @GetMapping()
     public List<Provincia> obtenerProvincias() {
-        return provinciasService.findAllOrdenado();
+        return provinciasService.verProvincias();
     }
 
     @GetMapping("/{id}")
@@ -44,13 +44,13 @@ public class ProvinciasController {
     
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Provincia nuevoProvincia(@RequestBody @Valid ProvinciaDTO p) {        
-        return provinciasService.insert(p);
+    public Provincia nuevoProvincia(@RequestBody @Valid ProvinciaDTO provinciaDTO) {        
+        return provinciasService.insert(provinciaDTO);
     }
 
     @PutMapping("/{id}")
-    public Provincia updateProvincia(@PathVariable int id, @RequestBody @Valid ProvinciaDTO m) {
-        return provinciasService.update(id, m);
+    public Provincia updateProvincia(@PathVariable int id, @RequestBody @Valid ProvinciaDTO provinciaDTO) {
+        return provinciasService.update(id, provinciaDTO);
     }
 
     @DeleteMapping("/{id}")

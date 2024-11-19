@@ -29,7 +29,7 @@ public class MunicipiosController {
 
     @GetMapping()
     public List<Municipio> getAll() {
-        return municipiosService.findMunicipiosOrdenado();
+        return municipiosService.verMunicipios();
     }
 
     @GetMapping("/{id}")
@@ -46,13 +46,13 @@ public class MunicipiosController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Municipio nuevoMunicipio(@RequestBody @Valid MunicipioDTO m) {
-        return municipiosService.insert(m);
+    public Municipio nuevoMunicipio(@RequestBody @Valid MunicipioDTO municipioDTO) {
+        return municipiosService.insert(municipioDTO);
     }
 
     @PutMapping("/{id}")
-    public Municipio updateMunicipio(@PathVariable int id, @RequestBody @Valid MunicipioDTO m) {
-        return municipiosService.update(id, m);
+    public Municipio updateMunicipio(@PathVariable int id, @RequestBody @Valid MunicipioDTO municipioDTO) {
+        return municipiosService.update(id, municipioDTO);
     }
 
     @DeleteMapping("/{id}")

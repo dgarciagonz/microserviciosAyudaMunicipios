@@ -24,6 +24,6 @@ public interface SolicitudesRepository extends JpaRepository<Solicitud, Integer>
     Solicitud findById(int id);
 
     List<Solicitud> findByMunicipio(Municipio municipio);
-    List<Solicitud> findByAutor(Usuario usuario);
+    List<Solicitud> findByCreador(Usuario usuario);
 
 }

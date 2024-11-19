@@ -8,6 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
@@ -29,7 +30,8 @@ public class Solicitud {
     private Municipio municipio;
 
     @ManyToOne
-    private Usuario autor;
+    @JoinColumn(name = "creador")
+    Usuario creador;
 
     private String calle;
     private boolean completado;

@@ -3,7 +3,6 @@ package com.example.ayuda_municipios.usuarios;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,7 +18,6 @@ import com.example.ayuda_municipios.usuarios.dto.UsuarioDTO;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
-@CrossOrigin("*")
 @RestController
 @RequestMapping("/usuarios")
 @RequiredArgsConstructor
