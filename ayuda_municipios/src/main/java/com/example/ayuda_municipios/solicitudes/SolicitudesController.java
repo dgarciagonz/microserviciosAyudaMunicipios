@@ -1,7 +1,5 @@
 package com.example.ayuda_municipios.solicitudes;
 
-import java.util.List;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.ayuda_municipios.solicitudes.dto.RespuestaSolicitudDTO;
+import com.example.ayuda_municipios.solicitudes.dto.RespuestaSolicitudesDTO;
 import com.example.ayuda_municipios.solicitudes.dto.SolicitudDTO;
 
 import jakarta.validation.Valid;
@@ -26,44 +26,48 @@ public class SolicitudesController {
     private final SolicitudesService solicitudesService;
 
     @GetMapping()
-    public List<Solicitud> solicitudesInompletas() {
-        return solicitudesService.SolicitudesNoCompletadas();
+    public RespuestaSolicitudesDTO solicitudesInompletas() {
+        return new RespuestaSolicitudesDTO(solicitudesService.SolicitudesNoCompletadas());
     }
 
     @GetMapping("/completadas")
-    public List<Solicitud> solicitudesCompletas(){
-        return solicitudesService.SolicitudesCompletadas();
+    public RespuestaSolicitudesDTO solicitudesCompletas(){
+        return new RespuestaSolicitudesDTO(solicitudesService.SolicitudesCompletadas());
     }
 
     @GetMapping("/todas")
-    public List<Solicitud> todas(){
-        return solicitudesService.getSolicitudes();
-    }
-
-    @GetMapping("/{id}")
-    public Solicitud verSolicitud(@PathVariable int id){
-        return solicitudesService.getById(id);
+    public RespuestaSolicitudesDTO todas(){
+        return new RespuestaSolicitudesDTO(solicitudesService.getSolicitudes());
     }
 
     @GetMapping("/municipio/{id}")
-    public List<Solicitud> getSolicitudesByMunicipio(@PathVariable int id) {
-        return solicitudesService.findByMunicipio(id);
+    public RespuestaSolicitudesDTO getSolicitudesByMunicipio(@PathVariable int id) {
+        return new RespuestaSolicitudesDTO(solicitudesService.findByMunicipio(id));
+    }
+
+    @GetMapping("/usuario/{id}")
+    public RespuestaSolicitudesDTO getSolicitudesByUsuario(@PathVariable int id) {
+        return new RespuestaSolicitudesDTO(solicitudesService.findByMunicipio(id));
+    }
+    @GetMapping("/{id}")
+    public RespuestaSolicitudDTO verSolicitud(@PathVariable int id){
+        return new RespuestaSolicitudDTO(solicitudesService.getById(id));
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Solicitud nuevaSolicitud(@RequestBody @Valid SolicitudDTO solicitudDTO) {
-        return solicitudesService.insert(solicitudDTO);
+    public RespuestaSolicitudDTO nuevaSolicitud(@RequestBody @Valid SolicitudDTO solicitudDTO) {
+        return new RespuestaSolicitudDTO(solicitudesService.insert(solicitudDTO));
     }
 
     @PutMapping("/{id}")
-    public Solicitud updateSolicitud(@PathVariable int id, @RequestBody @Valid SolicitudDTO solicitudDTO) {
-        return solicitudesService.update(id, solicitudDTO);
+    public RespuestaSolicitudDTO updateSolicitud(@PathVariable int id, @RequestBody @Valid SolicitudDTO solicitudDTO) {
+        return new RespuestaSolicitudDTO(solicitudesService.update(id, solicitudDTO));
     }
 
-    @PatchMapping("{id}/completar")
-    public Solicitud completarSolicitud(@PathVariable int id) {
-        return solicitudesService.completar(id);
+    @PatchMapping("/completar/{id}")
+    public RespuestaSolicitudDTO completarSolicitud(@PathVariable int id) {
+        return new RespuestaSolicitudDTO(solicitudesService.completar(id));
     }
 
     @DeleteMapping("/{id}")

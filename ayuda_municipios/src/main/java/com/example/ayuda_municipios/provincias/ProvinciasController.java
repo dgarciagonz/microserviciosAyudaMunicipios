@@ -1,7 +1,5 @@
 package com.example.ayuda_municipios.provincias;
 
-import java.util.List;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,9 +10,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
 
 import com.example.ayuda_municipios.provincias.dto.ProvinciaDTO;
+import com.example.ayuda_municipios.provincias.dto.RespuestaProvinciaDTO;
+import com.example.ayuda_municipios.provincias.dto.RespuestaProvinciasDTO;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -26,31 +25,25 @@ public class ProvinciasController {
     private final ProvinciasService provinciasService;
 
     @GetMapping()
-    public List<Provincia> obtenerProvincias() {
-        return provinciasService.verProvincias();
+    public RespuestaProvinciasDTO obtenerProvincias() {
+        return new RespuestaProvinciasDTO(provinciasService.verProvincias());
     }
 
     @GetMapping("/{id}")
-    public Provincia buscarPorId(@PathVariable int id) {
-        Provincia provincia = provinciasService.getById(id);
-        if(provincia != null) {
-            return provincia;
-        } else {
-            throw new ResponseStatusException(
-            HttpStatus.NOT_FOUND, "Provincia no encontrado", null);
-        }
+    public RespuestaProvinciaDTO buscarPorId(@PathVariable int id) {
+        return new RespuestaProvinciaDTO(provinciasService.getById(id));
     }
 
     
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Provincia nuevoProvincia(@RequestBody @Valid ProvinciaDTO provinciaDTO) {        
-        return provinciasService.insert(provinciaDTO);
+    public RespuestaProvinciaDTO nuevoProvincia(@RequestBody @Valid ProvinciaDTO provinciaDTO) {        
+        return new RespuestaProvinciaDTO(provinciasService.insert(provinciaDTO));
     }
 
     @PutMapping("/{id}")
-    public Provincia updateProvincia(@PathVariable int id, @RequestBody @Valid ProvinciaDTO provinciaDTO) {
-        return provinciasService.update(id, provinciaDTO);
+    public RespuestaProvinciaDTO updateProvincia(@PathVariable int id, @RequestBody @Valid ProvinciaDTO provinciaDTO) {
+        return new RespuestaProvinciaDTO(provinciasService.update(id, provinciaDTO));
     }
 
     @DeleteMapping("/{id}")

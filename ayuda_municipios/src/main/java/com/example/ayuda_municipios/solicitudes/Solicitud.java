@@ -27,6 +27,7 @@ public class Solicitud {
     private String ayuda;
 
     @ManyToOne
+    @JoinColumn(name = "municipio")
     private Municipio municipio;
 
     @ManyToOne

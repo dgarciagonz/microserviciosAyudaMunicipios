@@ -49,6 +49,15 @@ public class SolicitudesService {
 
     }
 
+    public List<Solicitud> findByCreador(int creadorId) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Integer idAuth = Integer.parseInt(auth.getCredentials().toString());
+        Usuario usuario = usuariosRepository.findUsuarioById(idAuth);
+
+        return solicitudesRepository.findByCreador(usuario);
+
+    }
+
     public Solicitud insert(SolicitudDTO solicitudDTO) {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -68,8 +77,7 @@ public class SolicitudesService {
         Municipio municipio = municipiosRepository.findById(solicitudDTO.getMunicipio())
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Municipio no encontrado"));
 
-        Usuario usuario = usuariosRepository.findById(solicitudDTO.getCreador())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario no encontrado"));
+            Usuario usuario = solicitud.getCreador();
 
                 Authentication auth = SecurityContextHolder.getContext().getAuthentication();
                 Integer idAuth = Integer.parseInt(auth.getCredentials().toString());
