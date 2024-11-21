@@ -8,7 +8,7 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
     const username = document.getElementById('registerUsername').value;
 
     try {
-        const response = await fetch(`${BASE_URL}/registro`, {
+        const response = await fetch(`${url}/registro`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

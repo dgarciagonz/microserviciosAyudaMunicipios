@@ -1,0 +1,17 @@
+
+.text-bg-naranja{
+    background-color: rgb(255, 179, 37) !important;
+}
+
+.text-bg-amarillo{
+    background-color: rgb(255, 248, 188) !important;
+}
+
+.bg-blanco{
+    background-color: rgba(255, 255, 255, 0) !important;
+}
+
+.bordeado{
+    background-color: rgb(196, 152, 88);
+    border-bottom: 5px rgb(179, 107, 0) solid !important;
+}

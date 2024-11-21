@@ -1,15 +1,6 @@
 const url = 'http://localhost:8080/auth';
 
-if(localStorage.getItem("token")) {
-    location.assign("index.html");
-}
 
-function setCookie(cname, cvalue, exdays) {
-    const d = new Date();
-    d.setTime(d.getTime() + (exdays*24*60*60*1000));
-    let expires = "expires="+ d.toUTCString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-  }
 
 document.getElementById('loginForm').addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -33,8 +24,16 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
         }
 
         const data = await response.json();
-        setCookie('token', data.token, 1);
-        alert('Inicio de sesión exitoso. Token guardado.');
+
+        localStorage.setItem('token', data.accessToken);
+        const token = localStorage.getItem('token');
+
+        if (token){
+            window.location.href="index.html";
+        }else{
+            alert('Error al iniciar sesión.');
+        }
+
     } catch (error) {
         console.error('Error en el login:', error);
         alert('Error al iniciar sesión.');
