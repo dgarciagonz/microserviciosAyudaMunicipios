@@ -1,7 +1,7 @@
-
-
-document.getElementById(logout).addEventListener('submit', e => {
+document.getElementById('logout').addEventListener('click', e => {
     e.preventDefault();
-    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+    const token = localStorage.getItem('token');
+    localStorage.removeItem(token);
+    window.location.href="login.html";
 })
 

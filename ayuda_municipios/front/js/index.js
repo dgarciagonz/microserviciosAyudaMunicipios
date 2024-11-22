@@ -200,7 +200,6 @@ function mostrarSolicitudes(solicitudes) {
         const editarOption = document.createElement('li');
         const editarLink = document.createElement('a');
         editarLink.classList.add('dropdown-item');
-        editarLink.href = '#';
         editarLink.textContent = 'Editar solicitud';
         editarLink.setAttribute('data-bs-toggle',"modal");
         editarLink.setAttribute("data-bs-target","#form-cambiar");
@@ -212,7 +211,6 @@ function mostrarSolicitudes(solicitudes) {
         const borrarOption = document.createElement('li');
         const borrarLink = document.createElement('a');
         borrarLink.classList.add('dropdown-item');
-        borrarLink.href = '#';
         borrarLink.textContent = 'Eliminar solicitud';
         borrarLink.addEventListener('click', (e) => {
             borrarSolicitud(solicitud.id);
@@ -357,7 +355,7 @@ async function cambiarSolicitud(idsolicitud,fecha_publicacion,municipio,) {
     const prioridad = document.getElementById('cambioPrioridad').value;
 
     if (ayuda === "" || calle === "" || prioridad === "") {
-        alert(`Campos no rellenados'}`);
+        alert(`Campos no rellenados`);
     } else {
         const token = localStorage.getItem("token");
 
