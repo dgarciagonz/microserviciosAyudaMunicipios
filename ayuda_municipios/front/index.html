@@ -33,15 +33,8 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="provincias.html">Provincias</a>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    Usuario</a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Ver tus solicitudes</a></li>
-                                    <li><a class="dropdown-item" href="login.html">Iniciar Sesión</a></li>
-                                    <li><a class="dropdown-item" href='#' id="logout" >Cerrar Sesión</a></li>
-                                </ul>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" id="loginout"></a>
                             </li>
                         </ul>
                     </div>
@@ -147,10 +140,12 @@
                             <div id="calleHelp" class="form-text">No introduzcas la dirección completa, solo la calle
                             </div>
                         </div>
-
+                                
                         <div class="mb-3">
                             <select class="form-select" id="nuevoPrioridad" aria-label="Default" required>
-                                <option selected disabled>Prioridad</option>
+                                <option value="ALTA">ALTA</option>
+                                <option value="MEDIA">MEDIA</option>
+                                <option value="BAJA">BAJA</option>
                             </select>
                         </div>
                     </form>

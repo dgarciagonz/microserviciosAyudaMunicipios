@@ -110,6 +110,16 @@ public class SolicitudesService {
     }
 
     public void delete(int id) {
+        Solicitud solicitud = solicitudesRepository.findById(id);
+        Usuario usuario=solicitud.getCreador();
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Integer idAuth = Integer.parseInt(auth.getCredentials().toString());
+        Usuario usuarioActual= usuariosRepository.findUsuarioById(idAuth);
+
+       if (usuario.getId() != usuarioActual.getId()) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "No tienes permiso para eliminar esta solicitud");
+        }
         solicitudesRepository.deleteById(id);
     }
 }

@@ -15,3 +15,13 @@
     background-color: rgb(196, 152, 88);
     border-bottom: 5px rgb(179, 107, 0) solid !important;
 }
+
+.fondo_login{
+    
+    background-color: burlywood;
+}
+
+.fondo_register{
+    
+    background-color: thistle;
+}

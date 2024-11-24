@@ -1,7 +1,6 @@
 const url = 'http://localhost:8080/solicitudes';
 const municipiosURL = 'http://localhost:8080/municipios';
 
-const token = localStorage.getItem('token');
 
 async function cargarSolicitudesIncompletas() {
     try {

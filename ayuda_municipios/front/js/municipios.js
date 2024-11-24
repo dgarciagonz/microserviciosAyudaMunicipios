@@ -42,7 +42,7 @@ async function cargarProvincias() {
         const provincias = data.provincias;
         rellenarNuevos(provincias);
     } catch (error) {
-        console.error('Error al cargar los municipios:', error);
+        console.error('Error al cargar las provincias:', error);
     }
 }
 
@@ -65,7 +65,7 @@ async function cargarMunicipio(idmunicipio) {
         rellenarDatos(municipio);
 
     } catch (error) {
-        console.error('Error al cargar las solicitudes:', error);
+        console.error('Error al cargar el municipio:', error);
     }
 }
 
@@ -116,14 +116,14 @@ async function borrarMunicipio(municipioIdId) {
 
         if (!response.ok) {
             const error = await response.json();
-            alert(`Inicia sesión para hacer esta acción`);
+            alert(`Error: ${error.detail || 'Error desconocido'}`);
             return;
         }
         window.location.reload();
 
 
     } catch (error) {
-        console.error('Error al cargar las solicitudes:', error);
+        console.error('Error al eliminar el municipio:', error);
     }
 }
 
@@ -160,7 +160,7 @@ async function crearMunicipio() {
             window.location.href = "municipios.html";
 
         } catch (error) {
-            console.error('Error al crear la solicitud:', error);
+            console.error('Error al crear el municipio:', error);
         }
     }
 }
@@ -168,12 +168,17 @@ async function crearMunicipio() {
 function mostrarSolicitudes(solicitudes){
     const nombreMunicipio = document.getElementById('solicitud-municipio');
     nombreMunicipio.classList.add('fw-bold');
-    nombreMunicipio.textContent = solicitudes[0].municipio.nombre;
+    
 
     const tbody = document.getElementById('tabla-solicitudes');
-    while (tbody.firstChild) {
-        tbody.removeChild(tbody.lastChild);
-      }
+    if (tbody.firstChild) {
+        while (tbody.firstChild) {
+            tbody.removeChild(tbody.lastChild);
+          }
+    }
+
+    if (solicitudes.length>0) {
+        nombreMunicipio.textContent = solicitudes[0].municipio.nombre;
 
     solicitudes.forEach(solicitud => {
         const tr = document.createElement('tr');
@@ -200,7 +205,9 @@ function mostrarSolicitudes(solicitudes){
         tr.appendChild(tdCompletado);
         tbody.appendChild(tr)
     });
-
+    }else{
+        nombreMunicipio.textContent = "Este municipio no tiene solicitudes";
+    }
 }
 
 function mostrarMunicipios(municipios){
