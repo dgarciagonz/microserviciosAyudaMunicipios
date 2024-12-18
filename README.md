@@ -26,7 +26,7 @@ las zonas más afectadas.
 
 ## Ejecutar proyecto
 
-Clona el proyecto
+Clona el repositorio
 
 ```bash
   git clone https://github.com/dgarciagonz/microserviciosAyudaMunicipios.git
